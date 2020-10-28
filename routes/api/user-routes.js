@@ -62,9 +62,10 @@ router.post('/', (req, res) => {
           return;
         }
     
-        res.json({ user: dbUserData });
+        // res.json({ user: dbUserData });
     
         // Verify user
+        const validPassword = dbUserData.checkPassword(req.body.password);
     
       });  
     });
