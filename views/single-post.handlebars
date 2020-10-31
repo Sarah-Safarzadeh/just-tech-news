@@ -1,4 +1,4 @@
-<article class="post">
+{{> post-info post}}
   <div class="title">
     <a href="{{post.post_url}}" target="_blank">{{post.title}}</a>
     <span>({{post.post_url}})</span>
@@ -9,7 +9,21 @@
     |
     <a href="/post/{{post.id}}">{{post.comments.length}} comment(s)</a>
   </div>
-</article>
+{{/> post-info post}}
+{{!-- not sure if above line is correct ^ --}}
+
+<div class="comments">
+  {{#each this}}
+  <section class="comment">
+    <div class="meta">
+      {{user.username}} on {{created_at}}
+    </div>
+    <div class="text">
+      {{comment_text}}
+    </div>
+  </section>
+  {{/each}}
+</div>
 
 {{#if loggedIn}}
 <form class="comment-form">
